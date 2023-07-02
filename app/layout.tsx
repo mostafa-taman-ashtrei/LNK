@@ -1,4 +1,6 @@
+import Nav from "@/components/Nav";
 import "@/public/styles/globals.css";
+import Providers from "./provider";
 
 export const metadata = {
   title: "LNK",
@@ -12,7 +14,12 @@ interface props {
 const RootLayout: React.FC<props> = ({ children }) => {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="dark:bg-black">
+        <Providers>
+          <Nav />
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 };
