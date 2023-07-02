@@ -1,3 +1,23 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "quotes": [
+      "error",
+      "double",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "semi": "warn",
+    "camelcase": "error",
+    "array-bracket-newline": "error",
+    "no-unused-vars": [
+      "error"
+    ],
+    "eol-last": [
+      "error",
+      "always"
+    ]
+  }
 }
