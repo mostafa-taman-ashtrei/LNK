@@ -8,7 +8,7 @@ const Pricing: React.FC = () => {
   const [isMonthly, setIsMonthly] = useState(true);
 
   return (
-    <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28">
+    <section id="pricing" className="bg-primary/[.03] relative z-10 py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
           title="Simple and Affordable Pricing"
@@ -67,10 +67,9 @@ const Pricing: React.FC = () => {
             comingSoon={false}
           >
             <OfferList text="Graph View" status="active" />
-            <OfferList text="Linking URLS" status="active" />
-            <OfferList text="Pocket Integration" status="inactive" />
+            <OfferList text="Integrations" status="inactive" />
             <OfferList text="URL shotening" status="inactive" />
-            <OfferList text="Link Journey" status="inactive" />
+            <OfferList text="Team Space" status="inactive" />
           </PricingBox>
 
           <PricingBox
@@ -81,10 +80,9 @@ const Pricing: React.FC = () => {
             comingSoon={true}
           >
             <OfferList text="Graph View" status="active" />
-            <OfferList text="Linking URLS" status="active" />
-            <OfferList text="Pocket Integration" status="active" />
+            <OfferList text="Integrations" status="active" />
             <OfferList text="URL shotening" status="active" />
-            <OfferList text="Link Journey" status="active" />
+            <OfferList text="Team Space" status="active" />
           </PricingBox>
 
         </div>

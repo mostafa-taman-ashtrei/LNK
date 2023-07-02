@@ -1,4 +1,5 @@
 import AboutSection from "@/components/About/AboutSection";
+import Features from "@/components/Features";
 import Hero from "@/components/Hero";
 import Pricing from "@/components/Pricing";
 
@@ -7,6 +8,7 @@ const Home: React.FC = () => {
     <>
       <Hero />
       <AboutSection />
+      <Features />
       <Pricing />
     </>
   );
