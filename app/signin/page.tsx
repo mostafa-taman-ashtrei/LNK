@@ -8,9 +8,11 @@ const Signin: React.FC = () => {
   const [signInWithGoogle, _, loading] = useSignInWithGoogle(auth);
   const router = useRouter();
 
-  const handleGoogleSignIn = () => {
-    signInWithGoogle();
-    router.push("/dashboard");
+  const handleGoogleSignIn = async () => {
+    const googleAuth = await signInWithGoogle();
+    console.log({ googleAuth });
+
+    if (!loading && typeof googleAuth?.user !== undefined) router.push("/dashboard");
   };
 
   return (
