@@ -157,19 +157,24 @@ const Nav: React.FC = () => {
                                             )}
                                         </li>
                                     ))}
-                                    <Link
-                                        href="/signin"
-                                        className={`flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
-                                    >
-                                        Sign In
-                                    </Link>
 
-                                    <Link
-                                        href="/signup"
-                                        className={`flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
-                                    >
-                                        Sign Up
-                                    </Link>
+                                    {
+                                        navbarOpen && <>
+                                            <Link
+                                                href="/signin"
+                                                className={`flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
+                                            >
+                                                Sign In
+                                            </Link>
+                                            <Link
+                                                href="/signup"
+                                                className={`flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
+                                            >
+                                                Sign Up
+                                            </Link>
+                                        </>
+                                    }
+
                                 </ul>
                             </nav>
                         </div>

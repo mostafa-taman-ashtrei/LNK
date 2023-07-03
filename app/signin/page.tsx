@@ -10,8 +10,6 @@ const Signin: React.FC = () => {
 
   const handleGoogleSignIn = async () => {
     const googleAuth = await signInWithGoogle();
-    console.log({ googleAuth });
-
     if (!loading && typeof googleAuth?.user !== undefined) router.push("/dashboard");
   };
 
