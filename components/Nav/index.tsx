@@ -6,14 +6,34 @@ import { useEffect, useState } from "react";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
+import Image from "next/image";
 
 const Nav: React.FC = () => {
     const [signOut] = useSignOut(auth);
     const [user] = useAuthState(auth);
     const router = useRouter();
 
+    const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+
+    const profileMenuToggle = () => {
+        setNavbarOpen((prev) => {
+            if (prev == true) return false;
+            return prev;
+        });
+
+        setProfileMenuOpen((prev) => !prev);
+    };
+
     const [navbarOpen, setNavbarOpen] = useState(false);
-    const navbarToggleHandler = () => setNavbarOpen(!navbarOpen);
+
+    const navbarToggleHandler = () => {
+        setProfileMenuOpen((prev) => {
+            if (prev == true) return false;
+            return prev;
+        });
+
+        setNavbarOpen((prev) => !prev);
+    };
 
     // Sticky Navbar
     const [sticky, setSticky] = useState(false);
@@ -121,8 +141,6 @@ const Nav: React.FC = () => {
                                                         className={`submenu relative top-full left-0 rounded-full bg-white transition-[top] duration-300 group-hover:opacity-100 dark:bg-dark lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${openIndex === index ? "block" : "hidden"
                                                             }`}
                                                     >
-                                                        <h1>dsf</h1>
-
                                                         {menuItem?.submenu?.map((submenuItem: any) => (
                                                             <>
                                                                 <Link
@@ -142,15 +160,44 @@ const Nav: React.FC = () => {
                                 </ul>
                             </nav>
                         </div>
+
                         <div className="flex items-center justify-end pr-16 lg:pr-0">
                             {
                                 user
-                                    ? <button
-                                        className="ease-in-up hidden rounded-full bg-primary py-3 px-8 text-base font-bold text-white transition duration-300 hover:bg-opacity-90 hover:shadow-signUp md:block md:px-9 lg:px-6 xl:px-9"
-                                        onClick={handleSignOut}
-                                    >
-                                        Sign Out
-                                    </button>
+                                    ? <> <Image
+                                        className="w-10 h-10 rounded-full cursor-pointer"
+                                        src={user.photoURL == null ? "" : user.photoURL}
+                                        alt="User Profile"
+                                        width={40}
+                                        height={40}
+                                        onClick={profileMenuToggle}
+                                    />
+                                        {
+                                            profileMenuOpen && <nav
+                                                className={`navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-white  duration-300 dark:border-body-color/20 dark:bg-dark ${profileMenuOpen
+                                                    ? "visibility top-full opacity-100"
+                                                    : "invisible top-[120%] opacity-0"
+                                                    }`}
+                                            >
+                                                <ul className="block">
+                                                    <Link
+                                                        href="/dashboard"
+                                                        className="flex py-2 px-2 text-center text-dark group-hover:opacity-70 dark:text-white cursor-pointer hover:bg-primary/10"
+                                                    >
+                                                        Dashboard
+                                                    </Link>
+
+                                                    <li
+                                                        className="flex py-2 px-2 text-center text-dark group-hover:opacity-70 dark:text-white cursor-pointer hover:bg-primary/10"
+                                                        onClick={handleSignOut}
+                                                    >
+                                                        Sign out
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        }
+                                    </>
+
                                     : <>
                                         <Link
                                             href="/signin"

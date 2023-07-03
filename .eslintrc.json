@@ -13,7 +13,11 @@
     "camelcase": "error",
     "array-bracket-newline": "error",
     "no-unused-vars": [
-      "error"
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
     ],
     "eol-last": [
       "error",

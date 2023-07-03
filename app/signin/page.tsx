@@ -1,11 +1,17 @@
 "use client";
 import { auth } from "@/firebase/clientApp";
+import { useRouter } from "next/navigation";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 
 
 const Signin: React.FC = () => {
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
-  const handleGoogleSignIn = () => signInWithGoogle();
+  const [signInWithGoogle, _, loading] = useSignInWithGoogle(auth);
+  const router = useRouter();
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle();
+    router.push("/dashboard");
+  };
 
   return (
     <section className="relative z-10 overflow-hidden pt-36 pb-16 md:pb-20 lg:pt-[180px] lg:pb-28">
@@ -22,6 +28,7 @@ const Signin: React.FC = () => {
               <button
                 className="mb-6 flex w-full items-center justify-center rounded-md bg-white p-3 text-base font-medium text-body-color shadow-one hover:text-primary dark:bg-[#242B51] dark:text-body-color dark:shadow-signUp dark:hover:text-white"
                 onClick={handleGoogleSignIn}
+                disabled={loading}
               >
                 <span className="mr-3">
                   <svg
