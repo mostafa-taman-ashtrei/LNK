@@ -1,30 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { MdOutlineDashboard } from "react-icons/md";
-import { RiSettings4Line } from "react-icons/ri";
-import { BiLink } from "react-icons/bi";
-import { AiOutlineAppstoreAdd, AiOutlineTeam, AiOutlineHeart } from "react-icons/ai";
-import { PiGraph } from "react-icons/pi";
+import dashboardMenu from "@/app/staticData/dashboardMenu";
 
 const Dashboard: React.FC = () => {
     const [openDashboardMenu, setOpenDashboardMenu] = useState(false);
     const handleToggleDashboardMenu = () => setOpenDashboardMenu((prev) => !prev);
 
-    const menus = [
-        { name: "Dashboard", link: "/", icon: MdOutlineDashboard },
-        { name: "Graph View", link: "/", icon: PiGraph },
-        { name: "Favorite", link: "/", icon: AiOutlineHeart },
-
-        { name: "Integrations", link: "/", icon: AiOutlineAppstoreAdd, margin: true },
-        { name: "Team Space", link: "/", icon: AiOutlineTeam },
-        { name: "Url Shortener", link: "/", icon: BiLink },
-
-        { name: "Setting", link: "/", icon: RiSettings4Line, margin: true },
-    ];
-
     return (
-        <div className=" pt-[90px] pb-[90px]">
+        <div className="pt-[90px]">
             <div className="min-h-screen flex">
                 <section className="flex gap-6">
                     <div className={`bg-gray-300 dark:bg-gray-800 rounded-md min-h-screen ${openDashboardMenu ? "w-72" : "w-16"} duration-500  px-4`}>
@@ -36,9 +20,8 @@ const Dashboard: React.FC = () => {
                             />
                         </div>
 
-
                         <div className="mt-4 flex flex-col gap-4 relative">
-                            {menus?.map((menu, i) => (
+                            {dashboardMenu.map((menu, i) => (
                                 <div
                                     key={i}
                                     className={` ${menu?.margin && "mt-5"} group flex items-center text-sm  gap-3.5 font-medium p-2  rounded-md cursor-pointer`}
@@ -68,7 +51,6 @@ const Dashboard: React.FC = () => {
                 </section>
 
                 <main className="flex-1 min-w-0 overflow-auto m-3">
-
                     <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
                         <div className="grid grid-cols-3 gap-4 mb-4">
                             <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import ThemeToggler from "./ThemeToggler";
-import menuData from "./menuData";
+import menuData from "@/app/staticData/menuData";
 import Image from "next/image";
 
 const Nav: React.FC = () => {
@@ -158,19 +158,22 @@ const Nav: React.FC = () => {
                                         </li>
                                     ))}
 
-                                    <Link
-                                        href="/signin"
-                                        className={`xl:hidden flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
-                                    >
-                                        Sign In
-                                    </Link>
-                                    <Link
-                                        href="/signup"
-                                        className={`xl:hidden flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
-                                    >
-                                        Sign Up
-                                    </Link>
-
+                                    {
+                                        user == null && <>
+                                            <Link
+                                                href="/signin"
+                                                className={`xl:hidden flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
+                                            >
+                                                Sign In
+                                            </Link>
+                                            <Link
+                                                href="/signup"
+                                                className={`xl:hidden flex py-2 text-base text-dark group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:py-6 lg:px-0`}
+                                            >
+                                                Sign Up
+                                            </Link>
+                                        </>
+                                    }
                                 </ul>
                             </nav>
                         </div>
