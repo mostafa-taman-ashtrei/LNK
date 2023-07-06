@@ -3,6 +3,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { CiCircleRemove } from "react-icons/ci";
 import { HiPencilAlt } from "react-icons/hi";
 import { FiLink2 } from "react-icons/fi";
+import { Tooltip } from "react-tooltip";
 
 const LinkCard: React.FC = () => {
     return (
@@ -15,12 +16,30 @@ const LinkCard: React.FC = () => {
                     </div>
 
                     <div className="flex items-center space-x-4">
-                        <div className="text-gray-500 hover:text-gray-300 cursor-pointer">
-                            <MdFavoriteBorder size={20} />
+                        <div className="text-gray-500 hover:text-gray-600 cursor-pointer">
+                            <MdFavoriteBorder
+                                id="favorite-tooltip"
+                                size={20}
+                            />
+
+                            <Tooltip
+                                place="top"
+                                anchorSelect="#favorite-tooltip"
+                                content="Add to favorites."
+                            />
                         </div>
 
-                        <div className="text-gray-500 hover:text-gray-300 cursor-pointer">
-                            <BiLinkExternal size={20} />
+                        <div className="text-gray-500 hover:text-gray-600 cursor-pointer">
+                            <BiLinkExternal
+                                size={20}
+                                id="open-link"
+                            />
+
+                            <Tooltip
+                                place="top"
+                                anchorSelect="#open-link"
+                                content="Open in a new tab."
+                            />
                         </div>
                     </div>
                 </div>
@@ -31,12 +50,30 @@ const LinkCard: React.FC = () => {
                     </div>
 
                     <div className="flex items-center space-x-4">
-                        <div className="text-gray-500 hover:text-gray-300 cursor-pointer">
-                            <CiCircleRemove size={20} />
+                        <div className="text-gray-500 hover:text-gray-600 cursor-pointer">
+                            <CiCircleRemove
+                                size={20}
+                                id="delete-link"
+                            />
+
+                            <Tooltip
+                                place="bottom"
+                                anchorSelect="#delete-link"
+                                content="Delete link."
+                            />
                         </div>
 
-                        <div className="text-gray-500 hover:text-gray-300 cursor-pointer">
-                            <HiPencilAlt size={20} />
+                        <div className="text-gray-500 hover:text-gray-600 cursor-pointer">
+                            <HiPencilAlt
+                                size={20}
+                                id="edit-link"
+                            />
+
+                            <Tooltip
+                                place="bottom"
+                                anchorSelect="#edit-link"
+                                content="Delete link."
+                            />
                         </div>
                     </div>
                 </div>
