@@ -32,7 +32,6 @@ const Hero: React.FC = () => {
                                 >
                                     Get Started
                                 </Link>
-
                             </div>
                         </div>
                     </div>

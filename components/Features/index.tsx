@@ -1,6 +1,6 @@
 import SectionTitle from "../Common/SectionTitle";
 import SingleFeature from "./SingleFeature";
-import featuresData from "@/app/staticData/featuresData";
+import featuresData from "@/staticData/featuresData";
 
 const Features: React.FC = () => {
     return (

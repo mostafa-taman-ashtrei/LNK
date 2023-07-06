@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
-import dashboardMenu from "@/app/staticData/dashboardMenu";
+import dashboardMenu from "@/staticData/dashboardMenu";
 
 const Dashboard: React.FC = () => {
     const [openDashboardMenu, setOpenDashboardMenu] = useState(false);

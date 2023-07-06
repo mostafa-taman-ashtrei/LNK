@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import ThemeToggler from "./ThemeToggler";
-import menuData from "@/app/staticData/menuData";
+import menuData from "@/staticData/menuData";
 import Image from "next/image";
 
 const Nav: React.FC = () => {
@@ -70,7 +70,7 @@ const Nav: React.FC = () => {
                 <div className="relative -mx-4 flex items-center justify-between">
                     <div className="w-60 max-w-full px-4 xl:mr-12">
                         <Link
-                            href="/"
+                            href={user ? "/dashboard" : "/"}
                             className={`header-logo block w-full font-bold font-mono text-xl"
                                 ${sticky ? "py-5 lg:py-2" : "py-8"}
                             `}
