@@ -1,6 +1,7 @@
 import SectionTitle from "../Common/SectionTitle";
 import SingleFeature from "./SingleFeature";
 import featuresData from "@/staticData/featuresData";
+import { v4 as uuidv4 } from "uuid";
 
 const Features: React.FC = () => {
     return (
@@ -18,7 +19,7 @@ const Features: React.FC = () => {
 
                 <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-2">
                     {featuresData.map((feature) => (
-                        <SingleFeature key={feature.id} feature={feature} />
+                        <SingleFeature key={uuidv4()} feature={feature} />
                     ))}
                 </div>
 

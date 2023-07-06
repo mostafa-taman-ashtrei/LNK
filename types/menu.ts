@@ -8,9 +8,11 @@ export interface Menu {
     submenu?: Menu[];
 };
 
+export type DashboardTabType = "Dashboard" | "Graph View" | "Favorite" | "Integrations" | "Team Space" | "Url Shortener" | "Settings"
+
 export interface DashboardMenuType {
     name: string;
-    link: string;
+    link: DashboardTabType;
     icon: IconType;
     margin?: boolean;
 };

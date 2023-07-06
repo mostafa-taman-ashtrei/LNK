@@ -7,6 +7,7 @@ import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "@/staticData/menuData";
 import Image from "next/image";
+import { v4 as uuidv4 } from "uuid";
 
 const Nav: React.FC = () => {
     const [signOut] = useSignOut(auth);
@@ -113,7 +114,7 @@ const Nav: React.FC = () => {
                             >
                                 <ul className="block lg:flex lg:space-x-12">
                                     {menuData.map((menuItem, index) => (
-                                        <li key={menuItem.id} className="group relative">
+                                        <li key={uuidv4()} className="group relative">
                                             {menuItem.path ? (
                                                 <Link
                                                     href={menuItem.path}
@@ -145,7 +146,7 @@ const Nav: React.FC = () => {
                                                             <>
                                                                 <Link
                                                                     href={submenuItem.path}
-                                                                    key={submenuItem.id}
+                                                                    key={uuidv4()}
                                                                     className="block rounded py-2.5 text-sm text-dark hover:opacity-70 dark:text-white lg:px-3"
                                                                 >
                                                                     {submenuItem.title}

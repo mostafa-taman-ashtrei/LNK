@@ -2,10 +2,16 @@
 import React, { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import dashboardMenu from "@/staticData/dashboardMenu";
+import { DashboardTabType } from "@/types/menu";
+import { v4 as uuidv4 } from "uuid";
+import DashboardTab from "@/components/Dashboard/DashboardTab";
 
 const Dashboard: React.FC = () => {
     const [openDashboardMenu, setOpenDashboardMenu] = useState(false);
     const handleToggleDashboardMenu = () => setOpenDashboardMenu((prev) => !prev);
+
+    const [activeTab, setActiveTab] = useState<DashboardTabType>("Favorite");
+    const handleLinkClick = (tab: DashboardTabType) => setActiveTab(tab);
 
     return (
         <div className="pt-[90px]">
@@ -23,7 +29,8 @@ const Dashboard: React.FC = () => {
                         <div className="mt-4 flex flex-col gap-4 relative">
                             {dashboardMenu.map((menu, i) => (
                                 <div
-                                    key={i}
+                                    key={uuidv4()}
+                                    onClick={() => handleLinkClick(menu.link)}
                                     className={` ${menu?.margin && "mt-5"} group flex items-center text-sm  gap-3.5 font-medium p-2  rounded-md cursor-pointer`}
                                 >
                                     <div>
@@ -51,54 +58,10 @@ const Dashboard: React.FC = () => {
                 </section>
 
                 <main className="flex-1 min-w-0 overflow-auto m-3">
-                    <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-                        <div className="grid grid-cols-3 gap-4 mb-4">
-                            <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                                <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                            </div>
-                            <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                                <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                            </div>
-                            <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                                <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                            </div>
-                        </div>
-                        <div className="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-                            <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4 mb-4">
-                            <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                                <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                            </div>
-                            <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                                <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                            </div>
-                            <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                                <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                            </div>
-                            <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                                <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                            </div>
-                        </div>
-                        <div className="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-                            <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                                <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                            </div>
-                            <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                                <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                            </div>
-                            <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                                <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                            </div>
-                            <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                                <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-                            </div>
-                        </div>
-                    </div>
-
+                    {
+                        activeTab == "Dashboard" ? <DashboardTab />
+                            : <h1>{activeTab}</h1>
+                    }
                 </main>
             </div>
         </div>
