@@ -6,11 +6,12 @@ import { DashboardTabType } from "@/types/menu";
 import { v4 as uuidv4 } from "uuid";
 import DashboardTab from "@/components/Dashboard/DashboardTab";
 
+
 const Dashboard: React.FC = () => {
     const [openDashboardMenu, setOpenDashboardMenu] = useState(false);
     const handleToggleDashboardMenu = () => setOpenDashboardMenu((prev) => !prev);
 
-    const [activeTab, setActiveTab] = useState<DashboardTabType>("Favorite");
+    const [activeTab, setActiveTab] = useState<DashboardTabType>("Dashboard");
     const handleLinkClick = (tab: DashboardTabType) => setActiveTab(tab);
 
     return (
